@@ -104,7 +104,6 @@ The backend is built with Node.js/Express and provides RESTful API endpoints for
 ### Key Features
 - **File Upload Handling**  
   - CSV file validation and processing
-  - Progress tracking with WebSockets
   - Request ID generation for tracking
 
 - **Processing Status System**  
@@ -126,7 +125,7 @@ The backend is built with Node.js/Express and provides RESTful API endpoints for
   - Redis (for caching)
 
 - **Key Packages**
-  - `multer` - File upload handling
+  - `express-fileupload` - File upload handling
   - `json2csv` - CSV conversion
   - `uuid` - Request ID generation
   - `cors` - Cross-origin support
@@ -137,11 +136,11 @@ The backend is built with Node.js/Express and provides RESTful API endpoints for
 Create a `.env` file with the following values:
 
 ```env
-PORT=4000
+PORT=8080
 MONGODB_URI=mongodb://localhost:27017/csv-processor
 REDIS_URL=redis://localhost:6379
 UPLOAD_LIMIT=10mb
-JWT_SECRET=your_secret_key
+
 
 # GCP Environment Variables
 GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/credentials.json
