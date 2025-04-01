@@ -1,7 +1,7 @@
 
 # AI-Powered CSV Processing Platform
 
-![Demo Preview](https://via.placeholder.com/800x400.png?text=CSV+Processor+Demo) <!-- Add real screenshot -->
+![Demo Preview](https://image-processing-frontend-knaxvm63d-rohit9123s-projects.vercel.app/) <!-- Add real screenshot -->
 
 A modern web application for AI-powered CSV file processing with real-time progress tracking and secure file management.
 
