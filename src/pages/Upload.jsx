@@ -57,11 +57,11 @@ export default function Upload() {
         setUploadedIds(updatedIds);
       }
 
-      setTimeout(() => {
-        setIsUploading(false);
-        setProgress(0);
-        toast.success('Upload successful!');
-      }, 2000);
+      // Immediately update state after successful upload
+      setIsUploading(false);
+      setProgress(0);
+      toast.success('Upload successful!');
+
     } catch (err) {
       setError(err.response?.data?.message || 'Upload failed');
       setIsUploading(false);
