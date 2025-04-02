@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiCopy, FiUploadCloud, FiTrash2, FiClock, FiAlertCircle, FiFileText } from 'react-icons/fi';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 
 export default function Upload() {
   const [progress, setProgress] = useState(0);
@@ -21,13 +21,22 @@ export default function Upload() {
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    toast.success('Copied to clipboard!');
+    toast.success('Copied to clipboard!', {
+      icon: '📋',
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    });
   };
 
   const clearHistory = () => {
     localStorage.removeItem('uploadedIds');
     setUploadedIds([]);
-    toast.success('History cleared!');
+    toast.success('History cleared successfully!', {
+      icon: '🗑️',
+    });
   };
 
   const onDrop = useCallback(async (acceptedFiles) => {
@@ -57,15 +66,19 @@ export default function Upload() {
         setUploadedIds(updatedIds);
       }
 
-      // Immediately update state after successful upload
       setIsUploading(false);
       setProgress(0);
-      toast.success('Upload successful!');
+      toast.success('File uploaded successfully! 🎉', {
+        icon: '🚀',
+        duration: 4000,
+      });
 
     } catch (err) {
       setError(err.response?.data?.message || 'Upload failed');
       setIsUploading(false);
-      toast.error('Upload failed!');
+      toast.error('Upload failed! 😢', {
+        icon: '❌',
+      });
     }
   }, [uploadedIds]);
 
@@ -81,10 +94,13 @@ export default function Upload() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 p-8">
+      <Toaster position="top-right" reverseOrder={false} />
+
       <div className="max-w-2xl mx-auto space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="space-y-2 text-center"
         >
           <h1 className="text-4xl font-bold text-gray-800">CSV Upload</h1>
@@ -104,12 +120,12 @@ export default function Upload() {
           <div className="space-y-4">
             <motion.div
               animate={isUploading ? { rotate: 360 } : { rotate: 0 }}
-              transition={{ 
-                rotate: { 
-                  repeat: Infinity, 
-                  duration: 2, 
+              transition={{
+                rotate: {
+                  repeat: isUploading ? Infinity : 0,
+                  duration: 2,
                   ease: 'linear',
-                  repeatType: 'loop' 
+                  repeatType: 'loop'
                 }
               }}
               className="inline-block"
@@ -173,8 +189,10 @@ export default function Upload() {
             
             <div className="space-y-3">
               {uploadedIds.map((entry) => (
-                <div
+                <motion.div
                   key={entry.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <div className="flex-1">
@@ -206,7 +224,7 @@ export default function Upload() {
                       Download
                     </button>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
