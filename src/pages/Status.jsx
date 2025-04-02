@@ -20,7 +20,7 @@ export default function Status() {
     setLoading(true);
     setError(null);
     try {
-      const { data } = await axios.get(`https://image-processing-420g.onrender.com/api/status/${id}`);
+      const { data } = await axios.get(`https://image-processing-2hq6.onrender.com/api/status/${id}`);
       setStatusData(data);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to fetch status. Please try again.');

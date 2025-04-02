@@ -16,7 +16,7 @@ export default function Download() {
     setSuccess(false);
     
     try {
-      const response = await axios.get(`https://image-processing-420g.onrender.com/api/download/${id}`, {
+      const response = await axios.get(`https://image-processing-2hq6.onrender.com/api/download/${id}`, {
         responseType: 'blob',
       });
 

@@ -47,7 +47,7 @@ export default function Upload() {
       const formData = new FormData();
       formData.append('csv', acceptedFiles[0]);
 
-      const response = await axios.post('https://image-processing-420g.onrender.com/api/upload', formData, {
+      const response = await axios.post('https://image-processing-2hq6.onrender.com/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
