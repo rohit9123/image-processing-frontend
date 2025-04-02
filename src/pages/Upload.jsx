@@ -212,13 +212,13 @@ export default function Upload() {
                   </div>
                   <div className="flex space-x-3">
                     <button
-                      onClick={() => navigate(`/status/${entry.id}`)}
+                      onClick={() => navigate(`/status`)}
                       className="px-3 py-1.5 text-sm bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 transition-colors"
                     >
                       View Status
                     </button>
                     <button
-                      onClick={() => navigate(`/download/${entry.id}`)}
+                      onClick={() => navigate('/download')}
                       className="px-3 py-1.5 text-sm bg-green-50 text-green-600 rounded-md hover:bg-green-100 transition-colors"
                     >
                       Download

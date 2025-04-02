@@ -1,6 +1,7 @@
 // pages/Home.jsx
 import { motion } from 'framer-motion';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,6 +24,7 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
       {/* Floating Background Elements */}
@@ -97,6 +99,7 @@ export default function Home() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300 }}
             className="mt-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:shadow-lg transition-all"
+            onClick={() => navigate('/upload')}
           >
             Get Started - It's Free
           </motion.button>
